@@ -50,57 +50,79 @@ import React from "react";
 
 //Extracting Components
 
-function formatDate(date) {
-    return date.toLocaleDateString();
-}
-const comment = {
-    date: new Date(),
-    text: 'I hope you enjoy learning React!',
-    author: {
-        name: 'Hello Pankaj',
-        avatarUrl: 'https://placekitten.com/g/64/64',
-    },
-};
+// function formatDate(date) {
+//     return date.toLocaleDateString();
+// }
+// const comment = {
+//     date: new Date(),
+//     text: 'I hope you enjoy learning React!',
+//     author: {
+//         name: 'Hello Pankaj',
+//         avatarUrl: 'https://placekitten.com/g/64/64',
+//     },
+// };
+//
+// function Avatar(props) {
+//     return (
+//         <img className="Avatar"
+//              src={props.user.avatarUrl}
+//              alt={props.user.name}
+//         />
+//     );
+// }
+// function UserInfo(props) {
+//     return (
+//         <div className="UserInfo">
+//             <Avatar user={props.user} />
+//             <div className="UserInfo-name">
+//                 {props.user.name}
+//             </div>
+//         </div>
+//     );
+// }
+// function Comment(props){
+//     return(
+//         <div className="Comment">
+//             <UserInfo user={props.author}/>
+//             <div className="Comment-text">
+//                 {props.text}
+//             </div>
+//             <div className="comment-date">
+//                 {formatDate(props.date)}
+//             </div>
+//         </div>
+//     )
+// }
+// function App() {
+//     return(
+//         <Comment
+//             date={comment.date}
+//             text={comment.text}
+//             author={comment.author}
+//         />
+//     );
+// }
 
-function Avatar(props) {
-    return (
-        <img className="Avatar"
-             src={props.user.avatarUrl}
-             alt={props.user.name}
-        />
-    );
-}
-function UserInfo(props) {
-    return (
-        <div className="UserInfo">
-            <Avatar user={props.user} />
-            <div className="UserInfo-name">
-                {props.user.name}
+//Clock Rendering with state
+
+class Clock extends React.Component{
+    constructor(props) {
+        super(props);
+        this.state = {date: new Date()};
+    }
+    render() {
+        return (
+            <div>
+                <h1> Hello</h1>
+                <h2>It is {this.state.date.toLocaleTimeString()}.</h2>
             </div>
-        </div>
-    );
+        );
+    }
 }
-function Comment(props){
+
+function App(){
     return(
-        <div className="Comment">
-            <UserInfo user={props.author}/>
-            <div className="Comment-text">
-                {props.text}
-            </div>
-            <div className="comment-date">
-                {formatDate(props.date)}
-            </div>
-        </div>
+        <Clock />
     )
 }
-function App() {
-    return(
-        <Comment
-            date={comment.date}
-            text={comment.text}
-            author={comment.author}
-        />
-    );
-}
-
 export default App;
