@@ -42,18 +42,64 @@ import React from "react";
 //Class component
 
 // Composing components
-class Welcome extends React.Component{
-    render() {
-        return<h1>Hello, {this.props.name}</h1>;
-    }
-}
+// class Welcome extends React.Component{
+//     render() {
+//         return<h1>Hello, {this.props.name}</h1>;
+//     }
+// }
 
+//Extracting Components
+
+function formatDate(date) {
+    return date.toLocaleDateString();
+}
+const comment = {
+    date: new Date(),
+    text: 'I hope you enjoy learning React!',
+    author: {
+        name: 'Hello Pankaj',
+        avatarUrl: 'https://placekitten.com/g/64/64',
+    },
+};
+
+function Avatar(props) {
+    return (
+        <img className="Avatar"
+             src={props.user.avatarUrl}
+             alt={props.user.name}
+        />
+    );
+}
+function UserInfo(props) {
+    return (
+        <div className="UserInfo">
+            <Avatar user={props.user} />
+            <div className="UserInfo-name">
+                {props.user.name}
+            </div>
+        </div>
+    );
+}
+function Comment(props){
+    return(
+        <div className="Comment">
+            <UserInfo user={props.author}/>
+            <div className="Comment-text">
+                {props.text}
+            </div>
+            <div className="comment-date">
+                {formatDate(props.date)}
+            </div>
+        </div>
+    )
+}
 function App() {
     return(
-        <div>
-            <Welcome name="Pankaj"/>
-            <Welcome name="Avinash"/>
-        </div>
+        <Comment
+            date={comment.date}
+            text={comment.text}
+            author={comment.author}
+        />
     );
 }
 
