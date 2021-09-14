@@ -6,6 +6,11 @@ class Counter extends Component {
         tags: ['tag1', 'tag2', 'tag3']
     };
 
+    handleIncrement = () => {
+        console.log('Increment Clicked', this);
+    }
+
+
     renderTags(){
         if(this.state.tags.length === 0) return <p>"There are no tags!</p>;
 
@@ -16,7 +21,7 @@ class Counter extends Component {
         return (
             <div>
                 {/*<span className={this.getBadgeClasses()}>{this.formatCount()}</span>*/}
-                <button className="btn btn-secondary btn-sm">Increment</button>
+                <button onClick={this.handleIncrement} className="btn btn-secondary btn-sm">Increment</button>
                 {this.state.tags.length===0 && "There are no tags!"}
                 {this.renderTags()}
             </div>
